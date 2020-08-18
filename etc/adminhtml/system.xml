@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!-- /**
+ * @Author: nguyen
+ * @Date:   2020-02-12 14:01:01
+ * @Last Modified by:   nguyen
+ * @Last Modified time: 2020-02-15 18:55:34
+ */ -->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="magepow" translate="label" sortOrder="89">
+            <label>Magepow</label>
+        </tab>
+        <section id="magepow_core" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Marketplace Feed</label>
+            <tab>magepow</tab>
+            <resource>Magepow_Core::config_core</resource>
+            <group id="general" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+<!--                 <field id="enabled" translate="label comment" type="select" sortOrder="0"  showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enabled</label>
+                    <comment>Enabled Module</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field> -->
+                <field id="feed" translate="label comment" type="text" sortOrder="0"  showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Feed</label>
+                    <frontend_model>Magepow\Core\Block\Adminhtml\System\Feed</frontend_model>
+                    <comment>Feed</comment>
+                    <comment>
+                        <![CDATA[
+                            <script type="text/javascript">
+                                require(['jquery', 'magepow/slick', magepow/feed']);
+                            </script>
+                        ]]>
+                    </comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
