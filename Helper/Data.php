@@ -3,7 +3,7 @@
  * @Author: nguyen
  * @Date:   2020-02-12 14:01:01
  * @Last Modified by:   Alex Dong
- * @Last Modified time: 2020-04-15 19:41:53
+ * @Last Modified time: 2020-08-25 14:26:07
  */
 
 namespace Magepow\Core\Helper;
@@ -16,7 +16,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     protected $configModule;
 
     public function __construct(
-        \Magento\Framework\App\Helper\Context $context,
+        \Magento\Framework\App\Helper\Context $context
     )
     {
         parent::__construct($context);
