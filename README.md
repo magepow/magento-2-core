@@ -11,7 +11,7 @@ Run the following command in Magento 2 root folder.
 #### 1.1 Install
 
 ```
-composer require magepow/module-core
+composer require magepow/core
 php bin/magento setup:upgrade
 php bin/magento setup:static-content:deploy
 ```
@@ -19,7 +19,7 @@ php bin/magento setup:static-content:deploy
 #### 1.2 Upgrade
 
 ```
-composer update magepow/module-core
+composer update magepow/core
 php bin/magento setup:upgrade
 php bin/magento setup:static-content:deploy
 ```
