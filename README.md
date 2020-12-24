@@ -1,5 +1,9 @@
 # Magepow Core for Magento 2
 
+[![Latest Stable Version](https://poser.pugx.org/magepow/core/v/stable)](https://packagist.org/packages/magepow/core)
+[![Total Downloads](https://poser.pugx.org/magepow/core/downloads)](https://packagist.org/packages/magepow/core)
+[![Daily Downloads](https://poser.pugx.org/magepow/core/d/daily)](https://packagist.org/packages/magepow/core)
+
 ## How to install & upgrade Magepow_Core
 
 ### 1. Install via composer (recommend)
