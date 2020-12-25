@@ -3,7 +3,7 @@
  * @Author: nguyen
  * @Date:   2020-02-12 14:01:01
  * @Last Modified by:   Alex Dong
- * @Last Modified time: 2020-08-25 14:26:07
+ * @Last Modified time: 2020-12-25 10:54:35
  */
 
 namespace Magepow\Core\Helper;
@@ -15,11 +15,18 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     protected $configModule;
 
+    /**
+     * @var \Magento\Framework\Module\Manager
+     */
+    protected $moduleManager;
+
     public function __construct(
-        \Magento\Framework\App\Helper\Context $context
+        \Magento\Framework\App\Helper\Context $context,
+        \Magento\Framework\Module\Manager $moduleManager
     )
     {
         parent::__construct($context);
+        $this->moduleManager = $moduleManager;
         $this->configModule = $this->getConfig(strtolower($this->_getModuleName()));
     }
 
@@ -46,6 +53,11 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
 
         }
         return $value;
+    }
+
+    public function isEnabledModule($moduleName)
+    {
+        return $this->moduleManager->isEnabled($moduleName);
     }
 
 }
