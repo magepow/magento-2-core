@@ -2,7 +2,7 @@
 * @Author: Alex Dong
 * @Date:   2020-07-29 13:21:07
 * @Last Modified by:   Alex Dong
-* @Last Modified time: 2020-08-27 22:40:56
+* @Last Modified time: 2021-02-02 19:35:42
 */
 
 define([
@@ -17,7 +17,25 @@ define([
             },
 
             _create: function () {
-                this._initSlider();
+            	var options = this.options;
+            	var self = this;
+				if ("IntersectionObserver" in window) {
+					let gridSliderObserver = new IntersectionObserver(function(entries, observer) {
+						entries.forEach(function(entry) {
+							if (entry.isIntersecting) {
+								// let el = entry.target;
+								self._initSlider();
+								gridSliderObserver.unobserve(entry.target);
+							}
+						});
+					});
+
+					self.element.each(function(index, el){
+				    	gridSliderObserver.observe(el);
+				    });
+				} else {
+					self._initSlider();
+				}
             },
 
 			_uniqid: function (a = "", b = false) {
@@ -61,6 +79,7 @@ define([
 		                    });
 		                }
 		                el.on('init', function(event, slick){
+		                	$('body').trigger('contentUpdated'); // support lazyload
 		                    var video = $(this).find('.external-video');
 		                    video.click(function(event) {
 		                        var $this = $(this);
