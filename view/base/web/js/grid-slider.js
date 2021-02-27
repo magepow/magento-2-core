@@ -2,7 +2,7 @@
 * @Author: Alex Dong
 * @Date:   2020-07-29 13:21:07
 * @Last Modified by:   Alex Dong
-* @Last Modified time: 2021-02-27 15:48:25
+* @Last Modified time: 2021-02-27 18:01:13
 */
 
 define([
@@ -103,6 +103,8 @@ define([
 					});	
 		           	$head.append('<style type="text/css" id="' + styleId + '" >'+style+'</style>');
 
+		           	self.element.addClass('grid-init');
+		           	
                 });
             },
 
