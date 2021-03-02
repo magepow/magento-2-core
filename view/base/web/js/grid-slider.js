@@ -2,7 +2,7 @@
 * @Author: Alex Dong
 * @Date:   2020-07-29 13:21:07
 * @Last Modified by:   Alex Dong
-* @Last Modified time: 2021-02-27 18:01:13
+* @Last Modified time: 2021-03-02 13:29:40
 */
 
 define([
@@ -109,7 +109,7 @@ define([
             },
 
             getPesponsive : function (options) {
-            	if(!options.slidesToShow) return options.responsive;
+            	if(!options.slidesToShow || !options.responsive) return options.responsive;
 				var responsive 	= options.responsive;
 				var length = Object.keys(responsive).length;
 				var gridResponsive = [];
