@@ -2,7 +2,7 @@
 * @Author: Alex Dong
 * @Date:   2020-07-29 13:21:07
 * @Last Modified by:   Alex Dong
-* @Last Modified time: 2021-03-02 13:29:40
+* @Last Modified time: 2021-03-18 20:40:21
 */
 
 define([
@@ -67,10 +67,10 @@ define([
 									if (entry.isIntersecting) {
 										let el  = entry.target;
 										var $el = $(el);
-										self.sliderRender($el);
 										$el.on('init', function(){
 											$head.find('#' + styleId).remove();
 										});
+										self.sliderRender($el);
 										// gridSliderObserver.unobserve(el);
 									}
 								});
