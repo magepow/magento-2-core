@@ -2,7 +2,7 @@
 * @Author: Alex Dong
 * @Date:   2020-07-29 13:21:07
 * @Last Modified by:   Alex Dong
-* @Last Modified time: 2021-03-18 20:40:21
+* @Last Modified time: 2021-06-02 11:06:48
 */
 
 define([
@@ -55,7 +55,7 @@ define([
 		            var classes	= selector + ' '+ iClass;
 		            var padding = options.padding;
 		            var float  	= $('body').hasClass('rtl') ? 'right' : 'left';
-		            var style 	= padding ? classes + '{float: ' + float + '; padding: 0 '+padding+'px; box-sizing: border-box} ' + selector + '{margin: 0 -'+padding+'px}' : '';
+		            var style 	= (typeof padding !== 'undefined') ? classes + '{float: ' + float + '; padding: 0 '+padding+'px; box-sizing: border-box} ' + selector + '{margin: 0 -'+padding+'px}' : '';
 		            $head.append('<style type="text/css" >'+style+'</style>');
 		            style 		= '';
 		            if(options.slidesToShow){
