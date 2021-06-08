@@ -15,7 +15,7 @@
             <class>separator-top</class>
             <label>Marketplace Feed</label>
             <tab>magepow</tab>
-            <resource>Magepow_Core::config_core</resource>
+            <resource>Magepow_Core::config</resource>
             <group id="general" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>General</label>
 <!--                 <field id="enabled" translate="label comment" type="select" sortOrder="0"  showInDefault="1" showInWebsite="1" showInStore="1">
