@@ -2,7 +2,7 @@
 * @Author: Alex Dong
 * @Date:   2020-07-29 13:21:07
 * @Last Modified by:   Alex Dong
-* @Last Modified time: 2021-06-02 11:06:48
+* @Last Modified time: 2021-06-09 11:20:05
 */
 
 define([
@@ -37,7 +37,8 @@ define([
                 var options = this.options;
                 var self = this;
                 var $head = $('head');
-                self.element.find(options.selector).each(function() {
+                var elements = options.selector ? self.element.find(options.selector) : self.element;
+                elements.each(function() {
                     var element = $(this);
                     var selector = 'grid-slider-' + self._uniqid();
                     var styleId  = selector;
