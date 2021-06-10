@@ -3,7 +3,7 @@
  * @Author: nguyen
  * @Date:   2020-02-12 14:01:01
  * @Last Modified by:   Alex Dong
- * @Last Modified time: 2020-12-25 10:54:35
+ * @Last Modified time: 2021-06-10 09:25:12
  */
 
 namespace Magepow\Core\Helper;
@@ -58,6 +58,11 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     public function isEnabledModule($moduleName)
     {
         return $this->moduleManager->isEnabled($moduleName);
+    }
+
+    public function getModuleName()
+    {
+        return $this->_getModuleName();
     }
 
 }
