@@ -2,7 +2,7 @@
 * @Author: Alex Dong
 * @Date:   2020-07-29 13:21:07
 * @Last Modified by:   Alex Dong
-* @Last Modified time: 2021-06-09 11:20:05
+* @Last Modified time: 2021-06-19 16:39:08
 */
 
 define([
@@ -14,6 +14,7 @@ define([
         $.widget('magepow.gridSlider', {
             options: {
                 selector: '.grid-slider',
+                IntersectionObserver: true
             },
 
             _create: function () {
@@ -35,6 +36,7 @@ define([
 
             _initSlider: function () {
                 var options = this.options;
+                var useIntersectionObserver = options.IntersectionObserver;
                 var self = this;
                 var $head = $('head');
                 var elements = options.selector ? self.element.find(options.selector) : self.element;
@@ -60,7 +62,7 @@ define([
 		            $head.append('<style type="text/css" >'+style+'</style>');
 		            style 		= '';
 		            if(options.slidesToShow){
-						if ("IntersectionObserver" in window) {
+						if ("IntersectionObserver" in window && useIntersectionObserver) {
 							var nthChild = options.slidesToShow + 1;
 							style += selector + ' .item:nth-child(n+ ' + nthChild + ')' + '{display: none;} ' + selector +  ' .item{float:left};';
 							let gridSliderObserver = new IntersectionObserver(function(entries, observer) {
