@@ -2,7 +2,7 @@
 * @Author: Alex Dong
 * @Date:   2020-07-29 13:21:07
 * @Last Modified by:   Alex Dong
-* @Last Modified time: 2021-06-19 16:39:08
+* @Last Modified time: 2021-07-12 14:05:04
 */
 
 define([
@@ -14,7 +14,7 @@ define([
         $.widget('magepow.gridSlider', {
             options: {
                 selector: '.grid-slider',
-                IntersectionObserver: true
+                useIntersectionObserver: true
             },
 
             _create: function () {
@@ -36,7 +36,7 @@ define([
 
             _initSlider: function () {
                 var options = this.options;
-                var useIntersectionObserver = options.IntersectionObserver;
+                var useIntersectionObserver = options.useIntersectionObserver;
                 var self = this;
                 var $head = $('head');
                 var elements = options.selector ? self.element.find(options.selector) : self.element;
