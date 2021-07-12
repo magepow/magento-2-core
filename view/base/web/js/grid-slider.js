@@ -2,7 +2,7 @@
 * @Author: Alex Dong
 * @Date:   2020-07-29 13:21:07
 * @Last Modified by:   Alex Dong
-* @Last Modified time: 2021-07-12 15:01:27
+* @Last Modified time: 2021-07-12 15:47:17
 */
 
 define([
@@ -57,7 +57,8 @@ define([
 		                element.children().addClass('alo-item');
 		                var iClass = '.alo-item';
 		            }
-		            var classes	= selector + ' > '+ iClass;
+		            var rows 	= ((options || {}).rows === void 0) ? 1 : options.rows;
+		            var classes	= rows ? selector + ' '+ iClass : selector + ' > '+ iClass;
 		            var padding = options.padding;
 		            var float  	= $('body').hasClass('rtl') ? 'right' : 'left';
 		            var style 	= (typeof padding !== 'undefined') ? classes + '{float: ' + float + '; padding: 0 '+padding+'px; box-sizing: border-box} ' + selector + '{margin: 0 -'+padding+'px}' : '';
