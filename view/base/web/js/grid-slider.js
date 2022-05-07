@@ -2,7 +2,7 @@
 * @Author: Alex Dong
 * @Date:   2020-07-29 13:21:07
 * @Last Modified by:   Alex Dong
-* @Last Modified time: 2021-07-13 20:37:50
+* @Last Modified time: 2022-05-07 15:41:28
 */
 
 define([
@@ -144,6 +144,7 @@ define([
                     var video = $(this).find('.external-video');
                     video.click(function(event) {
                         var $this = $(this);
+                        if($this.hasClass('embed')) return;
                         var img = $this.find('img');
                         event.preventDefault();
                         var url = $(this).data('video');
