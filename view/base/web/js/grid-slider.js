@@ -2,7 +2,7 @@
 * @Author: Alex Dong
 * @Date:   2020-07-29 13:21:07
 * @Last Modified by:   Alex Dong
-* @Last Modified time: 2022-05-07 15:41:28
+* @Last Modified time: 2022-06-09 09:11:22
 */
 
 define([
@@ -23,17 +23,15 @@ define([
             	this._initSlider();
             },
 
-			_uniqid: function (a = "", b = false) {
-			    const c = Date.now()/1000;
-			    let d = c.toString(16).split(".").join("");
-			    while(d.length < 14) d += "0";
-			    let e = "";
-			    if(b){
-			        e = ".";
-			        e += Math.round(Math.random()*100000000);
-			    }
-			    return a + d + e;
-			},
+			_.uniqid = function (length=10) {
+	            let result       	   = '';
+	            const characters 	   = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+	            const charactersLength = characters.length;
+	            for ( let i = 0; i < length; i++ ) {
+	            	result += characters.charAt(Math.floor(Math.random() * charactersLength));
+	           	}
+	           	return result;
+			};
 
             _initSlider: function () {
                 var options = this.options;
