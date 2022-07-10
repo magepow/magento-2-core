@@ -2,7 +2,7 @@
 * @Author: Alex Dong
 * @Date:   2020-07-29 13:21:07
 * @Last Modified by:   Alex Dong
-* @Last Modified time: 2022-07-01 08:48:38
+* @Last Modified time: 2022-07-10 14:53:44
 */
 
 define([
@@ -140,7 +140,7 @@ define([
                 el.on('init', function(event, slick){
                 	$('body').trigger('contentUpdated'); // support lazyload
                     var video = $(this).find('.external-video');
-                    video.click(function(event) {
+                    video.on('click', function(event) {
                         var $this = $(this);
                         if($this.hasClass('embed')) return;
                         var img = $this.find('img');
