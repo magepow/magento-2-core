@@ -12,6 +12,7 @@ use Symfony\Component\Console\Command\Command; // for parent class
 use Symfony\Component\Console\Input\InputInterface; // for InputInterface used in execute method
 use Symfony\Component\Console\Output\OutputInterface; // for OutputInterface used in execute method
 use Symfony\Component\Filesystem\Filesystem;
+use Magento\Framework\App\ResourceConnection;
 
 class CleanUp extends Command
 {
@@ -35,21 +36,47 @@ class CleanUp extends Command
         'report_viewed_product_index',
     ];
 
+    /**
+     *
+     * @var Filesystem
+     */
+    private $filesystem;
+
+    /**
+     *
+     * @var ResourceConnection
+     */
+    private $resource;
+
+    /**
+     * @param Filesystem $filesystem
+     * @param ResourceConnection $resource
+     * @param string $name
+     */
+    public function __construct(
+        Filesystem $filesystem = null,
+        ResourceConnection $resource = null,
+        string $name = null
+    ) {
+       $this->filesystem = $filesystem ?: \Magento\Framework\App\ObjectManager::getInstance()->get(Filesystem::class);
+       $this->resource   = $resource   ?: \Magento\Framework\App\ObjectManager::getInstance()->get(ResourceConnection::class);
+       
+       parent::__construct($name);
+    }
+
     protected function configure()
     {
-        // bin/magento cleanUp
+        // command: bin/magento cleanUp
         $this->setName('cleanUp')
-             ->setDescription('Clear TMP Tables');
+             ->setDescription('Clear TMP Tables & Logs');
 
         parent::configure();
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-        $resource = $objectManager->get('Magento\Framework\App\ResourceConnection');
-        $connection = $resource->getConnection('\Magento\Framework\App\ResourceConnection::DEFAULT_CONNECTION'); 
-        $fs = new Filesystem();
+        $connection = $this->resource->getConnection(); 
+        $fs = $this->filesystem;
         try {
             foreach ($this->tables as $table) {
                 $connection->truncateTable($table);
