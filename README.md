@@ -1,4 +1,6 @@
-# Magepow Core for Magento 2
+[<img src="https://github.com/magepow/themeforest/blob/master/shopify/shopify_affiliate.jpg" >](https://shopify.pxf.io/VyL446)
+
+## Magepow Core for Magento 2
 
 [![Latest Stable Version](https://poser.pugx.org/magepow/core/v/stable)](https://packagist.org/packages/magepow/core)
 [![Total Downloads](https://poser.pugx.org/magepow/core/downloads)](https://packagist.org/packages/magepow/core)
