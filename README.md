@@ -35,7 +35,11 @@ Run compile if your store in Product mode:
 ```
 php bin/magento setup:di:compile
 ```
+Run the command if you want clean Log in database:
 
+```
+php bin/magento cleanUp
+```
 ### 2. Copy and paste
 
 If you don't want to install via composer, you can use this way. 
