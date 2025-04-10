@@ -3,7 +3,6 @@ var config = {
 	map: {
 		'*': {
 			'easing': 'magepow/easing',
-			'slick': 'magepow/slick',
 			'gridSlider': 'magepow/grid-slider',
 		},
 	},
