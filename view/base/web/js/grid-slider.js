@@ -34,16 +34,16 @@ define([
 			},
 
             _initSlider: function () {
-                var options = this.options;
-                var useIntersectionObserver = options.useIntersectionObserver;
-                var unobserve = options.unobserve;
-                var self = this;
-                var $head = $('head');
-                var elements = options.selector ? self.element.find(options.selector) : self.element;
+                var options = this.options,
+					useIntersectionObserver = options.useIntersectionObserver,
+					unobserve = options.unobserve,
+					self = this,
+					$head = $('head'),
+					elements = options.selector ? self.element.find(options.selector) : self.element;
                 elements.each(function() {
-                    var element = $(this);
-                    var selector = 'grid-slider-' + self._uniqid();
-                    var styleId  = selector;
+                    var element = $(this),
+						selector = 'grid-slider-' + self._uniqid(),
+						styleId  = selector;
                     element.addClass(selector);
                     selector = '.' + selector;
 		            if($('body').hasClass('rtl')){
@@ -51,15 +51,22 @@ define([
 		                element.data( 'rtl', true );
 		            }
 		            var options = element.data();
+					if ($.isEmptyObject(options)){
+						let gridslider = element.closest('grid-slider');
+						if (gridslider.length) {
+							options = gridslider.data();
+						}
+					}
+					console.log(options);
 		            if(iClass === undefined){
 		                element.children().addClass('alo-item');
 		                var iClass = '.alo-item';
 		            }
-		            var rows 	= ((options || {}).rows === void 0) ? 1 : options.rows;
-		            var classes	= rows ? selector + ' '+ iClass : selector + ' > '+ iClass;
-		            var padding = options.padding;
-		            var float  	= $('body').hasClass('rtl') ? 'right' : 'left';
-		            var style 	= (typeof padding !== 'undefined') ? classes + '{float: ' + float + '; padding: 0 '+padding+'px; box-sizing: border-box} ' + selector + '{margin: 0 -'+padding+'px}' : '';
+		            var rows 	= ((options || {}).rows === void 0) ? 1 : options.rows,
+						classes	= rows ? selector + ' '+ iClass : selector + ' > '+ iClass,
+						padding = options.padding,
+						float  	= $('body').hasClass('rtl') ? 'right' : 'left',
+						style 	= (typeof padding !== 'undefined') ? classes + '{float: ' + float + '; padding: 0 '+padding+'px; box-sizing: border-box} ' + selector + '{margin: 0 -'+padding+'px}' : '';
 		            $head.append('<style type="text/css" >'+style+'</style>');
 		            style 		= '';
 		            if(options.slidesToShow){
@@ -91,9 +98,9 @@ define([
 					if(responsive == undefined) return;
 					var length = Object.keys(responsive).length;
 					$.each( responsive, function( key, value ) {
-						var col = 0;
-						var maxWith = 0;
-						var minWith = 0;
+						var col = 0,
+							maxWith = 0,
+							minWith = 0;
 						$.each( value , function(size, num) { minWith = parseInt(size) + 1; col = num;});
 						if(key+2<length){
 							$.each( responsive[key+1], function( size, num) { maxWith = size; col = num;});
@@ -114,9 +121,9 @@ define([
 
             getPesponsive : function (options) {
             	if(!options.slidesToShow || !options.responsive) return options.responsive;
-				var responsive 	= options.responsive;
-				var length = Object.keys(responsive).length;
-				var gridResponsive = [];
+				var responsive 	= options.responsive,
+					length = Object.keys(responsive).length,
+					gridResponsive = [];
 				$.each( responsive, function( key, value ) { 
 					var breakpoint = {};
 					breakpoint[value.breakpoint] = parseInt(value.settings.slidesToShow);
@@ -130,8 +137,14 @@ define([
             		el.slick("refresh");
             		return;
             	}
-            	var options = el.data();
-                var lazy  = el.find('img.lazyload');
+				var options = el.data(),
+					lazy  = el.find('img.lazyload');
+				if ($.isEmptyObject(options)) {
+					let gridslider = el.closest('grid-slider');
+					if (gridslider.length) {
+						options = gridslider.data();
+					}
+				}
                 if(lazy.length){
                     lazy.each(function(index) {
                         $(this).data('lazy', $(this).data('src'));
@@ -167,6 +180,39 @@ define([
             }
 
         });
+
+	if (!customElements.get('grid-slider')) {
+		class GridSlider extends HTMLElement {
+			constructor() {
+				super();
+				var $this = this;
+				document.addEventListener("GridSliderUpdated", function (event) {
+					$this.initialized();
+				});
+			}
+
+			connectedCallback() {
+				if (this.slick) {
+					$(this).slick("refresh")
+				} else {
+					if (!this.classList.contains('ajax')) this.initialized();
+				}
+			}
+
+			initialized() {
+				
+				$(this).not(".exception, .grid-init, .slick-initialized").each(function () {
+					$.magepow.gridSlider({
+						selector: '.grid-slider',
+						useIntersectionObserver: false,
+						unobserve: true,
+					}, $(this));
+				});
+			}
+
+		}
+		customElements.define("grid-slider", GridSlider);
+	}
 
     return $.magepow.gridSlider;
 
