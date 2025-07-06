@@ -57,7 +57,6 @@ define([
 						options = gridslider.data();
 					}
 				}
-				console.log(options);
 				if (iClass === undefined) {
 					element.children().addClass('alo-item');
 					var iClass = '.alo-item';
