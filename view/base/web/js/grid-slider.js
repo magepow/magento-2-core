@@ -39,21 +39,27 @@ define([
 				unobserve = options.unobserve,
 				self = this,
 				$head = $('head'),
-				elements = options.selector ? self.element.find(options.selector) : self.element;
+				elements = options.selector ? self.element.find(options.selector) : self.element,
+				isRTL = ( document.documentElement.dir == "rtl" || document.documentElement.classList.contains('rtl') || document.body.classList.contains('rtl') );
 			elements.each(function () {
 				var element = $(this),
 					selector = 'grid-slider-' + self._uniqid(),
 					styleId = selector;
 				element.addClass(selector);
 				selector = '.' + selector;
-				if ($('body').hasClass('rtl')) {
+				if (isRTL) {
 					element.attr('dir', 'rtl');
 					element.data('rtl', true);
 				}
 				var options = element.data();
-				if ($.isEmptyObject(options)) {
+				if (!options?.responsive) {
+					/* check is customElements grid-slider */
 					let gridslider = element.closest('grid-slider');
 					if (gridslider.length) {
+						if (isRTL) {
+							gridslider.attr('dir', 'rtl');
+							gridslider.data('rtl', true);
+						}
 						options = gridslider.data();
 					}
 				}
@@ -138,9 +144,14 @@ define([
 			}
 			var options = el.data(),
 				lazy = el.find('img.lazyload');
-			if ($.isEmptyObject(options)) {
+			if (!options?.responsive) {
 				let gridslider = el.closest('grid-slider');
 				if (gridslider.length) {
+					if (document.documentElement.dir == "rtl" 
+						|| document.documentElement.classList.contains('rtl')
+						|| document.body.classList.contains('rtl')) {
+						gridslider.data('rtl', true);
+					}
 					options = gridslider.data();
 				}
 			}
