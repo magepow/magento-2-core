@@ -54,9 +54,9 @@ class CleanUp extends Command
      * @param string $name
      */
     public function __construct(
-        Filesystem $filesystem = null,
-        ResourceConnection $resource = null,
-        string $name = null
+        ?Filesystem $filesystem = null,
+        ?ResourceConnection $resource = null,
+        ?string $name = null
     ) {
        $this->filesystem = $filesystem ?: \Magento\Framework\App\ObjectManager::getInstance()->get(Filesystem::class);
        $this->resource   = $resource   ?: \Magento\Framework\App\ObjectManager::getInstance()->get(ResourceConnection::class);
