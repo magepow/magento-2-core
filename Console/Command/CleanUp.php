@@ -73,7 +73,7 @@ class CleanUp extends Command
         parent::configure();
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $connection = $this->resource->getConnection(); 
         $fs = $this->filesystem;
@@ -90,8 +90,10 @@ class CleanUp extends Command
                     $output->writeln("Can\'t find directy $dir");
                 }
             }
+            return \Magento\Framework\Console\Cli::RETURN_SUCCESS;
         } catch (IOExceptionInterface $e) {
             echo "An error occurred while deleting your directory at " . $e->getPath();
+            return \Magento\Framework\Console\Cli::RETURN_FAILURE;
         }
     }
 }
