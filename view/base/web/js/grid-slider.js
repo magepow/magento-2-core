@@ -8,7 +8,7 @@
 define([
 	'jquery',
 	'slick',
-	'jquery-ui-modules/core'
+	'jquery-ui-modules/widget'
 ], function ($, slick) {
 	"use strict";
 	$.widget('magepow.gridSlider', {
