@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+    <group id="default">
+        <job name="magepow_core_fetch_feed" instance="Magepow\Core\Cron\FetchFeed" method="execute">
+            <schedule>0 * * * *</schedule>
+        </job>
+    </group>
+</config>

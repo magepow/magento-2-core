@@ -1,11 +1,4 @@
 <?xml version="1.0"?>
-<!-- /**
- * @Author: nguyen
- * @Date:   2020-02-12 14:01:01
- * @Last Modified by:   nguyen
- * @Last Modified time: 2020-02-15 18:55:34
- */ -->
-
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
     <system>
         <tab id="magepow" translate="label" sortOrder="102">
@@ -13,27 +6,54 @@
         </tab>
         <section id="magepow_core" translate="label" type="text" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
             <class>separator-top</class>
-            <label>Marketplace Feed</label>
+            <label>Community</label>
             <tab>magepow</tab>
             <resource>Magepow_Core::config</resource>
-            <group id="general" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
-                <label>General</label>
-<!--                 <field id="enabled" translate="label comment" type="select" sortOrder="0"  showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Enabled</label>
-                    <comment>Enabled Module</comment>
+            <group id="notification" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Admin Notifications</label>
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable Notifications</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                </field> -->
-                <field id="feed" translate="label comment" type="text" sortOrder="0"  showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Feed</label>
-                    <frontend_model>Magepow\Core\Block\Adminhtml\System\Feed</frontend_model>
-                    <comment>Feed</comment>
-                    <comment>
-                        <![CDATA[
-                            <script type="text/javascript">
-                                require(['jquery', 'magepow/slick', magepow/feed']);
-                            </script>
-                        ]]>
-                    </comment>
+                </field>
+                <field id="fetch" translate="label" type="button" sortOrder="35" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Fetch Now</label>
+                    <frontend_model>Magepow\Core\Block\Adminhtml\System\Config\FetchButton</frontend_model>
+                </field>
+                <field id="receive_update" translate="label comment" type="select" sortOrder="36" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Receive Product Updates</label>
+                    <comment>When disabled, update items are excluded from the fetched feed.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <config_path>magepow_core/notification/receive/update</config_path>
+                </field>
+                <field id="receive_security" translate="label" type="select" sortOrder="37" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Receive Security Notices</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <config_path>magepow_core/notification/receive/security</config_path>
+                </field>
+                <field id="receive_news" translate="label" type="select" sortOrder="38" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Receive News</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <config_path>magepow_core/notification/receive/news</config_path>
+                </field>
+                <field id="receive_offer" translate="label" type="select" sortOrder="39" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Receive Special Offers</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <config_path>magepow_core/notification/receive/offer</config_path>
+                </field>
+                <field id="update_enabled" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Update Notice - Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <config_path>magepow_core/notification/update/enabled</config_path>
+                </field>
+                <field id="security_enabled" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Security - Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <config_path>magepow_core/notification/security/enabled</config_path>
+                </field>
+                <field id="promotion_enabled" translate="label" type="select" sortOrder="60" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Promotion - Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <config_path>magepow_core/notification/promotion/enabled</config_path>
                 </field>
             </group>
         </section>

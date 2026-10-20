@@ -11,6 +11,38 @@
             <general>
                 <enabled>1</enabled>
             </general>
+            <notification>
+                <enabled>1</enabled>
+                <feed_url>magepow.com/community/notifications/feed/</feed_url>
+                <frequency>48</frequency>
+                <last_update>0</last_update>
+                <receive>
+                    <update>1</update>
+                    <security>1</security>
+                    <news>1</news>
+                    <offer>1</offer>
+                    <general>1</general>
+                </receive>
+                <update>
+                    <enabled>1</enabled>
+                    <severity>2</severity>
+                    <latest_version>1.2.0</latest_version>
+                </update>
+                <security>
+                    <enabled>1</enabled>
+                    <severity>1</severity>
+                    <message>A security update is available for Magepow extensions. Please update immediately to protect your store.</message>
+                    <url>https://magepow.com/security.html</url>
+                </security>
+                <promotion>
+                    <enabled>1</enabled>
+                    <severity>4</severity>
+                    <message>Discover new Magepow extensions with special offers for your store.</message>
+                    <url>https://magepow.com/magento-2-extensions.html</url>
+                    <from_date></from_date>
+                    <to_date></to_date>
+                </promotion>
+            </notification>
         </magepow_core>    
 	</default>
 </config>

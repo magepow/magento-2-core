@@ -17,7 +17,7 @@
 	            <resource id="Magento_Backend::stores">
 	                <resource id="Magento_Backend::stores_settings">
 	                    <resource id="Magento_Config::config">
-	                        <resource id="Magepow_Core::config" title="Marketplace Feed" />
+	                        <resource id="Magepow_Core::config" title="Community" />
 	                    </resource>
 	                </resource>
 	            </resource>

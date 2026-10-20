@@ -4,6 +4,17 @@
         <arguments>
             <argument name="commands" xsi:type="array">
                 <item name="magepow_cleanUp" xsi:type="object">Magepow\Core\Console\Command\CleanUp</item>
+                <item name="magepow_notify" xsi:type="object">Magepow\Core\Console\Command\Notify</item>
+            </argument>
+        </arguments>
+    </type>
+    <!-- Admin system messages (header notices on every admin page). -->
+    <type name="Magento\Framework\Notification\MessageList">
+        <arguments>
+            <argument name="messages" xsi:type="array">
+                <item name="magepow_update" xsi:type="object">Magepow\Core\Model\System\Message\Update</item>
+                <item name="magepow_security" xsi:type="object">Magepow\Core\Model\System\Message\Security</item>
+                <item name="magepow_promotion" xsi:type="object">Magepow\Core\Model\System\Message\Promotion</item>
             </argument>
         </arguments>
     </type>
