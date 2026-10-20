@@ -58,8 +58,8 @@ class Promotion implements MessageInterface
             return false;
         }
         // An empty date range means the promotion is always visible.
-        $fromDate = trim((string)$this->helper->getNotificationConfig('promotion/from_date'));
-        $toDate = trim((string)$this->helper->getNotificationConfig('promotion/to_date'));
+        $fromDate = trim((string)$this->helper->getNotificationConfig('promotion_from_date'));
+        $toDate = trim((string)$this->helper->getNotificationConfig('promotion_to_date'));
         $currentTime = time();
         if ($fromDate && strtotime($fromDate) > $currentTime) {
             return false;
@@ -88,7 +88,7 @@ class Promotion implements MessageInterface
      */
     public function getSeverity()
     {
-        return (int)$this->helper->getNotificationConfig('promotion/severity') ?: self::SEVERITY_NOTICE;
+        return (int)$this->helper->getNotificationConfig('promotion_severity') ?: self::SEVERITY_NOTICE;
     }
 
     /**
@@ -98,7 +98,7 @@ class Promotion implements MessageInterface
      */
     private function getMessage(): string
     {
-        $message = trim((string)$this->helper->getNotificationConfig('promotion/message'));
+        $message = trim((string)$this->helper->getNotificationConfig('promotion_message'));
         return $message ?: self::FALLBACK_MESSAGE;
     }
 
@@ -109,7 +109,7 @@ class Promotion implements MessageInterface
      */
     private function getUrl(): string
     {
-        $url = trim((string)$this->helper->getNotificationConfig('promotion/url'));
+        $url = trim((string)$this->helper->getNotificationConfig('promotion_url'));
         return $url ?: self::FALLBACK_URL;
     }
 }

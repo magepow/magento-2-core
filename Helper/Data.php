@@ -106,7 +106,7 @@ class Data extends AbstractHelper
     }
 
     /**
-     * Retrieve a notification config value, e.g. getNotificationConfig('update/severity').
+     * Retrieve a notification config value, e.g. getNotificationConfig('update_severity').
      *
      * @param string $path
      * @return mixed
@@ -136,6 +136,6 @@ class Data extends AbstractHelper
         if (!$type) {
             return true;
         }
-        return (bool)$this->getNotificationConfig($type . '/enabled');
+        return (bool)$this->getNotificationConfig($type . '_enabled');
     }
 }

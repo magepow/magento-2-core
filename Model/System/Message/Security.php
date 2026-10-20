@@ -75,7 +75,7 @@ class Security implements MessageInterface
      */
     public function getSeverity()
     {
-        return (int)$this->helper->getNotificationConfig('security/severity') ?: self::SEVERITY_CRITICAL;
+        return (int)$this->helper->getNotificationConfig('security_severity') ?: self::SEVERITY_CRITICAL;
     }
 
     /**
@@ -85,7 +85,7 @@ class Security implements MessageInterface
      */
     private function getMessage(): string
     {
-        $message = trim((string)$this->helper->getNotificationConfig('security/message'));
+        $message = trim((string)$this->helper->getNotificationConfig('security_message'));
         return $message ?: self::FALLBACK_MESSAGE;
     }
 
@@ -96,7 +96,7 @@ class Security implements MessageInterface
      */
     private function getUrl(): string
     {
-        $url = trim((string)$this->helper->getNotificationConfig('security/url'));
+        $url = trim((string)$this->helper->getNotificationConfig('security_url'));
         return $url ?: self::FALLBACK_URL;
     }
 }

@@ -89,7 +89,7 @@ class Update implements MessageInterface
      */
     public function getSeverity()
     {
-        return (int)$this->helper->getNotificationConfig('update/severity') ?: self::SEVERITY_MAJOR;
+        return (int)$this->helper->getNotificationConfig('update_severity') ?: self::SEVERITY_MAJOR;
     }
 
     /**
@@ -113,7 +113,7 @@ class Update implements MessageInterface
      */
     private function getLatestVersion()
     {
-        $latestVersion = trim((string)$this->helper->getNotificationConfig('update/latest_version'));
+        $latestVersion = trim((string)$this->helper->getNotificationConfig('update_latest_version'));
         return $latestVersion ?: self::FALLBACK_LATEST_VERSION;
     }
 }

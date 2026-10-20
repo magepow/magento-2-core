@@ -17,11 +17,11 @@ use Magento\Store\Model\ScopeInterface;
  */
 class NotificationConfig
 {
-    public const XML_PATH_RECEIVE_UPDATE = 'magepow_core/notification/receive/update';
-    public const XML_PATH_RECEIVE_SECURITY = 'magepow_core/notification/receive/security';
-    public const XML_PATH_RECEIVE_NEWS = 'magepow_core/notification/receive/news';
-    public const XML_PATH_RECEIVE_OFFER = 'magepow_core/notification/receive/offer';
-    public const XML_PATH_RECEIVE_GENERAL = 'magepow_core/notification/receive/general';
+    public const XML_PATH_RECEIVE_UPDATE = 'magepow_core/notification/receive_update';
+    public const XML_PATH_RECEIVE_SECURITY = 'magepow_core/notification/receive_security';
+    public const XML_PATH_RECEIVE_NEWS = 'magepow_core/notification/receive_news';
+    public const XML_PATH_RECEIVE_OFFER = 'magepow_core/notification/receive_offer';
+    public const XML_PATH_RECEIVE_GENERAL = 'magepow_core/notification/receive_general';
 
     /**
      * @var ScopeConfigInterface
